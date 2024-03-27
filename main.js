@@ -5,6 +5,8 @@ const meuModal = document.querySelector(".modal");
 const input = document.querySelector("#input");
 const msgErro = document.querySelector("#erro");
 
+horarioFuncionamento();
+
 abrirModal.addEventListener("click", () => {
   meuModal.style.display = "flex";
 });
@@ -30,5 +32,18 @@ function btnFinalizarHandler() {
   } else {
     msgErro.style.display = "none";
     fecharModalHandler();
+  }
+}
+
+function horarioFuncionamento() {
+  const data = new Date();
+  const hora = data.getHours();
+
+  const horario = document.querySelector(".box-horario");
+
+  if (hora >= 18 && hora <= 21) {
+    horario.style.backgroundColor = "#54cc0a";
+  } else {
+    horario.style.backgroundColor = "#EF4444";
   }
 }
