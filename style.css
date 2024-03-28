@@ -219,9 +219,10 @@ footer i {
 
 .box-valor-total {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   margin-bottom: 0.5rem;
   flex-direction: columns;
+  font-weight: bold;
 }
 
 #total {
@@ -283,6 +284,21 @@ footer i {
 
 #btn-finalizar:hover {
   opacity: 0.9;
+}
+
+li {
+  margin: 1rem 0;
+  margin-left: 1rem;
+}
+
+.delete-icon {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.fas:hover {
+  transition: all 0.3s ease;
+  color: rgb(239 68 68);
 }
 
 @media (min-width: 768px) {
