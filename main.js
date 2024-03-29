@@ -34,7 +34,7 @@ function btnFinalizarHandler() {
     msgErro.style.display = "flex";
   } else {
     msgErro.style.display = "none";
-    qtdAdicionada.innerText = `0`;
+    qtdAdicionada.innerText = 0;
     listaAdicionada.innerHTML = "";
     atualizarTotalPedido();
     Toastify({
@@ -82,6 +82,9 @@ botoesAdicionar.forEach((botao) => {
     hamburgerAdicionado.innerText = `${nomeItem} - R$ ${precoItem}`;
     hamburgerAdicionado.classList.add("item-carrinho");
     iconLixeira.classList.add("fas", "fa-trash-alt", "delete-icon");
+    iconLixeira.addEventListener("click", () => {
+      removerItem(hamburgerAdicionado, precoItem);
+    });
     hamburgerAdicionado.appendChild(iconLixeira);
 
     const lugarAdicionado = document.querySelector(".box-valor-total ol");
@@ -99,6 +102,27 @@ botoesAdicionar.forEach((botao) => {
     }).showToast();
   });
 });
+
+function removerItem(item, preco) {
+  item.remove();
+  totalPedido -= preco;
+  document.getElementById("total-valor").innerText = totalPedido.toFixed(2);
+
+  let quantidade = parseInt(qtdAdicionada.innerText);
+  quantidade -= 1;
+  qtdAdicionada.innerText = quantidade.toString();
+
+  Toastify({
+    text: "Item removido!",
+    duration: 3000,
+    gravity: "bottom",
+    position: "right",
+    style: {
+      background: "#EF4444",
+      color: "#ffffff",
+    },
+  }).showToast();
+}
 
 function atualizarTotalPedido() {
   totalPedido = 0;

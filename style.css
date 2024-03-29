@@ -294,10 +294,6 @@ li {
 .delete-icon {
   margin-left: 1rem;
   cursor: pointer;
-}
-
-.fas:hover {
-  transition: all 0.3s ease;
   color: rgb(239 68 68);
 }
 
